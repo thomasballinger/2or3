@@ -12,7 +12,7 @@ def version():
 
 setup(name='2or3',
       version=version(),
-      description='Writes a single byte to stdout (either "2" or "3") giving priority to 3 if unclear',
+      description='Writes a single byte to stdout (either "2" or "3") classifying a Python file using heuristics, giving priority to 3 if unclear',
       url='https://github.com/thomasballinger/2or3',
       author='Thomas Ballinger',
       author_email='thomasballinger@gmail.com',

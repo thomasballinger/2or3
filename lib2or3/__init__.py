@@ -10,7 +10,7 @@ import re
 
 
 def classify_string(s):
-    "Returns 2 or 3 based on a string s of Python source code"
+    "Returns 2 or 3 based on a string s of Python source code, defaulting to 3"
     first_line = s.splitlines()[0]
     if '#!' in first_line:
         if 'python3' in first_line:
@@ -43,7 +43,7 @@ def has_pycache(filename):
 def pycache_classify(filename):
     """Returns 3, 2, or None for prediction from  __pycache__ directory
 
-    file was found for a specific version"""
+    prefers 3 if both found, returns None if neither found"""
     dirname, name = os.path.split(os.path.abspath(filename))
     neighbors = os.listdir(dirname)
     if '__pycache__' in neighbors:
@@ -66,6 +66,7 @@ def classify(filename):
 
 
 def main(error_if_not=None):
+    """Writes 2 or 3 and a newline to stdout, uses exit code for error_if_not"""
     r = classify(sys.argv[-1])
     print r
     if error_if_not is not None:
